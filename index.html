@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusVerse AI - College Student Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">CampusVerse AI</span>
+            </div>
+            <div class="nav-links">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#attendance" class="nav-link">Attendance</a>
+                <a href="#tasks" class="nav-link">Tasks</a>
+                <a href="#notices" class="nav-link">Notices</a>
+            </div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Menu (Mobile) -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#dashboard" class="mobile-link">Dashboard</a>
+            <a href="#attendance" class="mobile-link">Attendance</a>
+            <a href="#tasks" class="mobile-link">Tasks</a>
+            <a href="#notices" class="mobile-link">Notices</a>
+        </div>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section">
+            <div class="section-header">
+                <h1>📊 Dashboard</h1>
+                <p>Welcome back! Here's your overview</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Attendance Card -->
+                <div class="card">
+                    <div class="card-icon">📚</div>
+                    <div class="card-content">
+                        <h3>Attendance</h3>
+                        <div class="card-stat" id="attendanceStat">85%</div>
+                        <p class="card-status" id="attendanceStatus">Above 75% ✓</p>
+                    </div>
+                </div>
+
+                <!-- Pending Assignments Card -->
+                <div class="card">
+                    <div class="card-icon">✍️</div>
+                    <div class="card-content">
+                        <h3>Pending Assignments</h3>
+                        <div class="card-stat" id="assignmentStat">3</div>
+                        <p class="card-status">Due this week</p>
+                    </div>
+                </div>
+
+                <!-- Upcoming Events Card -->
+                <div class="card">
+                    <div class="card-icon">📅</div>
+                    <div class="card-content">
+                        <h3>Upcoming Events</h3>
+                        <div class="card-stat" id="eventsStat">2</div>
+                        <p class="card-status">Next: Quiz on Oct 5</p>
+                    </div>
+                </div>
+
+                <!-- Study Hours Card -->
+                <div class="card">
+                    <div class="card-icon">⏰</div>
+                    <div class="card-content">
+                        <h3>Study Hours</h3>
+                        <div class="card-stat">12h</div>
+                        <p class="card-status">This week</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attendance Calculator Section -->
+        <section id="attendance" class="section">
+            <div class="section-header">
+                <h1>📊 Attendance Calculator</h1>
+                <p>Calculate your current attendance percentage</p>
+            </div>
+
+            <div class="card wide-card">
+                <div class="attendance-calculator">
+                    <div class="calculator-input-group">
+                        <label for="attendedClasses">Classes Attended</label>
+                        <input type="number" id="attendedClasses" placeholder="Enter attended classes" min="0">
+                    </div>
+
+                    <div class="calculator-input-group">
+                        <label for="totalClasses">Total Classes</label>
+                        <input type="number" id="totalClasses" placeholder="Enter total classes" min="0">
+                    </div>
+
+                    <button class="btn btn-primary" id="calculateBtn">Calculate Attendance</button>
+
+                    <div class="calculation-result" id="calculationResult" style="display: none;">
+                        <div class="result-percentage" id="resultPercentage">0%</div>
+                        <div class="result-message" id="resultMessage">Enter values to calculate</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tasks/Todo Manager Section -->
+        <section id="tasks" class="section">
+            <div class="section-header">
+                <h1>✅ Task Manager</h1>
+                <p>Keep track of your assignments and tasks</p>
+            </div>
+
+            <div class="card wide-card">
+                <div class="task-manager">
+                    <div class="task-input-group">
+                        <input type="text" id="taskInput" placeholder="Add a new task..." class="task-input">
+                        <button class="btn btn-primary" id="addTaskBtn">Add Task</button>
+                    </div>
+
+                    <div class="tasks-list" id="tasksList">
+                        <div class="task-item">
+                            <div class="task-checkbox">
+                                <input type="checkbox">
+                            </div>
+                            <div class="task-text">Complete Mathematics assignment</div>
+                            <button class="task-delete">🗑️</button>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-checkbox">
+                                <input type="checkbox">
+                            </div>
+                            <div class="task-text">Study for Physics quiz</div>
+                            <button class="task-delete">🗑️</button>
+                        </div>
+                    </div>
+
+                    <div class="task-stats">
+                        <p><span id="totalTasks">2</span> total • <span id="completedTasks">0</span> completed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- College Notices Section -->
+        <section id="notices" class="section">
+            <div class="section-header">
+                <h1>📢 College Notices</h1>
+                <p>Important announcements and updates</p>
+            </div>
+
+            <div class="notices-grid">
+                <div class="notice-card">
+                    <div class="notice-date">Oct 5, 2026</div>
+                    <h3>Midterm Examinations Schedule Released</h3>
+                    <p>The midterm exam schedule has been released. Check the college portal for detailed information about dates and timings.</p>
+                    <div class="notice-tag">Important</div>
+                </div>
+
+                <div class="notice-card">
+                    <div class="notice-date">Oct 3, 2026</div>
+                    <h3>Library Extended Hours</h3>
+                    <p>The college library will be open until 10 PM on weekdays during the exam season for student convenience.</p>
+                    <div class="notice-tag">Update</div>
+                </div>
+
+                <div class="notice-card">
+                    <div class="notice-date">Oct 1, 2026</div>
+                    <h3>Student Club Registration Open</h3>
+                    <p>Registration for various student clubs is now open. Join your favorite clubs and participate in activities!</p>
+                    <div class="notice-tag">Event</div>
+                </div>
+
+                <div class="notice-card">
+                    <div class="notice-date">Sep 28, 2026</div>
+                    <h3>Scholarship Opportunities</h3>
+                    <p>New scholarship opportunities are available for eligible students. Apply before October 15th deadline.</p>
+                    <div class="notice-tag">Opportunity</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Assistant Chat Section -->
+        <section id="ai-assistant" class="section">
+            <div class="section-header">
+                <h1>🤖 AI Assistant</h1>
+                <p>Ask me anything about your academics</p>
+            </div>
+
+            <div class="card wide-card">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message assistant-message">
+                            <div class="message-content">Hi! I'm your CampusVerse AI Assistant. I can help you with attendance, assignments, and upcoming events. What would you like to know?</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-group">
+                        <input type="text" id="chatInput" placeholder="Ask me about attendance, assignments, or events..." class="chat-input">
+                        <button class="btn btn-primary" id="sendBtn">Send</button>
+                    </div>
+
+                    <div class="suggested-questions">
+                        <p>Suggested questions:</p>
+                        <div class="suggestions">
+                            <button class="suggestion-btn" data-question="What is my attendance?">What is my attendance?</button>
+                            <button class="suggestion-btn" data-question="What do I have today?">What do I have today?</button>
+                            <button class="suggestion-btn" data-question="What assignments are pending?">What assignments are pending?</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 CampusVerse AI. All rights reserved. | Your College Student Assistant</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
